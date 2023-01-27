@@ -88,6 +88,7 @@ function M.with_config(config)
         cmp = true,
         illuminate = true,
         lsp_semantic = true,
+        lspsaga = true,
     }, config or M.config or {})
 end
 
@@ -519,6 +520,82 @@ function M.setup(colors, config)
         hi['@typeParameter'] = 'Type'
         hi['@decorator'] = 'Identifier'
     end
+
+    if M.config.lspsaga then
+        -- general
+        hi.TitleString           = { guifg = M.colors.base00, guibg = M.colors.base06, bold = true }
+        hi.TitleSymbol           = { guifg = M.colors.base06, guibg = M.colors.base00 }
+        hi.TitleIcon             = { guifg = M.colors.base08, guibg = M.colors.base06 }
+        hi.SagaBorder            = { guibg = M.colors.base00, guifg = M.colors.base06 }
+        hi.SagaNormal            = { guibg = M.colors.base00 }
+        hi.SagaExpand            = { guifg = M.colors.base08 }
+        hi.SagaCollapse          = { guifg = M.colors.base08 }
+        hi.SagaBeacon            = { guibg = M.colors.base0D }
+        -- code action
+        hi.ActionPreviewNormal   = 'SagaNormal'
+        hi.ActionPreviewBorder   = 'SagaBorder'
+        hi.ActionPreviewTitle    = { guifg = M.colors.base0E, guibg = M.colors.base00 }
+        hi.CodeActionNormal      = 'SagaNormal'
+        hi.CodeActionBorder      = 'SagaBorder'
+        hi.CodeActionText        = { guifg = M.colors.base0A }
+        hi.CodeActionConceal     = { guifg = M.colors.base0B }
+        -- finder
+        hi.FinderSelection       = { guifg = M.colors.base0C, bold = true }
+        hi.FinderFileName        = { guifg = M.colors.base07 }
+        hi.FinderCount           = 'Title'
+        hi.FinderIcon            = { guifg = M.colors.base0C }
+        hi.FinderType            = { guifg = M.colors.base0E }
+        --finder spinner
+        hi.FinderSpinnerTitle    = { guifg = M.colors.base0D, bold = true }
+        hi.FinderSpinner         = { guifg = M.colors.base0D, bold = true }
+        hi.FinderPreviewSearch   = 'Search'
+        hi.FinderVirtText        = { guifg = M.colors.base08 }
+        hi.FinderNormal          = 'SagaNormal'
+        hi.FinderBorder          = 'SagaBorder'
+        hi.FinderPreviewBorder   = 'SagaBorder'
+        -- definition
+        hi.DefinitionBorder      = 'SagaBorder'
+        hi.DefinitionNormal      = 'SagaNormal'
+        hi.DefinitionSearch      = 'Search'
+        -- hover
+        hi.HoverNormal           = 'SagaNormal'
+        hi.HoverBorder           = 'SagaBorder'
+        -- rename
+        hi.RenameBorder          = 'SagaBorder'
+        hi.RenameNormal          = { guifg = M.colors.base09, guibg = M.colors.base00 }
+        hi.RenameMatch           = 'Search'
+        -- diagnostic
+        hi.DiagnosticSource      = { guifg = M.colors.base04 }
+        hi.DiagnosticNormal      = 'SagaNormal'
+        hi.DiagnosticBorder      = 'SagaBorder'
+        hi.DiagnosticErrorBorder = 'SagaBorder'
+        hi.DiagnosticWarnBorder  = 'SagaBorder'
+        hi.DiagnosticHintBorder  = 'SagaBorder'
+        hi.DiagnosticInfoBorder  = 'SagaBorder'
+        hi.DiagnosticPos         = { guifg = M.colors.base04 }
+        hi.DiagnosticWord        = { guifg = M.colors.base06 }
+        -- Call Hierachry
+        hi.CallHierarchyNormal   = 'SagaNormal'
+        hi.CallHierarchyBorder   = 'SagaBorder'
+        hi.CallHierarchyIcon     = { guifg = M.colors.base0E }
+        hi.CallHierarchyTitle    = { guifg = M.colors.base08 }
+        -- lightbulb
+        hi.LspSagaLightBulb      = 'DiagnosticHint'
+        -- shadow
+        hi.SagaShadow            = { guibg = M.colors.base00 }
+        -- Outline
+        hi.OutlineIndent         = { guifg = M.colors.base0D }
+        hi.OutlinePreviewBorder  = 'SagaNormal'
+        hi.OutlinePreviewNormal  = 'SagaBorder'
+        -- Float term
+        hi.TerminalBorder        = 'SagaBorder'
+        hi.TerminalNormal        = 'SagaNormal'
+    end
+
+    -- \ base00 = '#2d2d2d', base01 = '#393939', base02 = '#515151', base03 = '#747369',
+    -- \ base04 = '#a09f93', base05 = '#d3d0c8', base06 = '#e8e6df', base07 = '#f2f0ec',
+    -- \ base08 = '#f2777a', base09 = '#f99157', base0A = '#ffcc66', base0B = '#99cc99',
+    -- \ base0C = '#66cccc', base0D = '#6699cc', base0E = '#cc99cc', base0F = '#d27b53'
 
     vim.g.terminal_color_0  = M.colors.base00
     vim.g.terminal_color_1  = M.colors.base08
