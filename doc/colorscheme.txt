@@ -80,6 +80,7 @@ Here is a list of all builtin colorschemes.
     darcula
     dracula
     eighties
+    eighties-light
     embers
     flat
     fruit-soda
