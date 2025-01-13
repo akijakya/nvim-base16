@@ -29,6 +29,7 @@ function process_vim() {
   local color
   local scheme=${1}
   local i=1
+  echo "hi clear"
   echo "let g:colors_name = 'base16-${scheme:t:r}'"
   echo "lua require('base16-colorscheme').setup({"
   for color in base0{0..9} base0{A..F}
@@ -72,7 +73,8 @@ function lua_init() {
 function process() {
   local name scheme
   printf "Processing scheme files..."
-  rm -rf ${LUA_DIR}
+  # Delete all color files except catppuccin, its not present in base16-schemes
+  find ${LUA_DIR} ! -name 'catppuccin.lua' -type f -exec rm -f {} +
   mkdir -p ${LUA_DIR} ${VIM_DIR}
   for scheme in ${SCHEMES_DIR}/*/*.yaml
   do
